@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zikri | Creative Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="https://files.catbox.moe/xzbwpp.jpg">
+    <meta name="title" content="Zikri" />
+    <meta name="description" content="Welcome to Zikri's portfolio. Discover photography, trading, investment collections, and connect on social media." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hazel.netlify.app/" />
+    <meta property="og:title" content="Zikri | Portfolio" />
+    <meta property="og:description" content="Welcome to Zikri's portfolio. Discover photography, trading, investment collections, and connect on social media." />
+    <meta property="og:image" content="https://files.catbox.moe/0arbsf.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://hazel.netlify.app/" />
+    <meta property="twitter:title" content="Zikri" />
+    <meta property="twitter:description" content="Welcome to Zikri's portfolio. Discover photography, trading, investment collections, and connect on social media." />
+    <meta property="twitter:image" content="https://files.catbox.moe/0arbsf.jpg" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "Zikri",
+        "description": "Welcome to Zikri's portfolio. Discover photography, trading, investment collections, and connect on social media.",
+        "url": "https://hazel.netlify.app",
+        "inLanguage": "en",
+        "datePublished": "2020-01-01",
+        "author": {
+            "@type": "Person",
+            "name": "Zikri"
+        }
+    }
+    </script>
+  
+    <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Archivo', 'sans-serif'],
+                        header: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        oled: {
+                            black: '#000000',
+                            zinc: '#09090b',
+                            card: '#0c0c0e',
+                        },
+                        accent: {
+                            blue: '#2563EB',
+                            lime: '#C3E41D',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Mouse Glow Effect */
+        .mouse-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(circle 600px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(37, 99, 235, 0.08), transparent 80%);
+            transition: opacity 0.3s ease;
+        }
+        
+        .dark .mouse-glow {
+            background: radial-gradient(circle 600px at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(195, 228, 29, 0.04), transparent 80%);
+        }
+
+        /* Glassmorphic Cards & Blurs */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .light .glass-panel {
+            background: rgba(24, 24, 27, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(24, 24, 27, 0.05);
+        }
+        
+        /* Interactive Blur Effect */
+        .blur-reveal {
+            filter: blur(8px);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .blur-reveal.active {
+            filter: blur(0);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-zinc-900 dark:bg-oled-black dark:text-zinc-50 transition-colors duration-500 overflow-x-hidden min-h-screen relative">
+
+    <!-- Mouse Glow Dynamic Element -->
+    <div class="mouse-glow"></div>
+
+    <!-- Background Decorative Gradients -->
+    <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent-blue/10 dark:bg-accent-blue/5 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-slow"></div>
+    <div class="absolute bottom-10 left-0 w-[30rem] h-[30rem] bg-accent-lime/10 dark:bg-accent-lime/5 rounded-full blur-[100px] pointer-events-none -z-10 animate-pulse-slow"></div>
+
+    <!-- Header / Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between p-6">
+            <!-- Brand Logo -->
+            <a href="#" class="font-header text-xl font-bold tracking-tight flex items-center gap-1 group">
+                <span class="text-accent-blue dark:text-accent-lime transition-colors">Porto</span>folio
+                <span class="text-[10px] uppercase font-sans tracking-widest bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 px-1.5 py-0.5 rounded ml-2 group-hover:scale-105 transition-transform duration-300">Zikri</span>
+            </a>
+
+            <!-- Desktop Menu Items & Actions -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm tracking-wider">
+                <a href="#home" class="hover:text-accent-blue dark:hover:text-accent-lime transition-colors">HOME</a>
+                <a href="#gallery" class="hover:text-accent-blue dark:hover:text-accent-lime transition-colors">GALLERY</a>
+                <a href="#study" class="hover:text-accent-blue dark:hover:text-accent-lime transition-colors">STUDY</a>
+                <a href="#feedback" class="hover:text-accent-blue dark:hover:text-accent-lime transition-colors">FEEDBACK</a>
+                <a href="#contact" class="hover:text-accent-blue dark:hover:text-accent-lime transition-colors">CONTACT</a>
+                
+                <!-- Theme Toggle Button -->
+                <button id="themeToggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon text-zinc-700 dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-accent-lime hidden dark:block"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Burger Trigger -->
+            <button id="menuTrigger" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 z-50 relative" aria-label="Toggle Navigation Menu">
+                <span class="w-6 h-[2px] bg-zinc-900 dark:bg-white transition-all duration-300 origin-center" id="burgerLine1"></span>
+                <span class="w-6 h-[2px] bg-zinc-900 dark:bg-white transition-all duration-300 origin-center" id="burgerLine2"></span>
+                <span class="w-6 h-[2px] bg-zinc-900 dark:bg-white transition-all duration-300 origin-center" id="burgerLine3"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div id="drawerOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-500"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="fixed top-0 right-0 h-screen w-[75vw] sm:w-[350px] bg-white dark:bg-oled-zinc border-l border-zinc-200 dark:border-zinc-800 z-50 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-between p-8">
+        <div class="flex flex-col gap-10 mt-16">
+            <div class="flex items-center justify-between">
+                <span class="font-header text-lg font-bold tracking-widest text-zinc-400">NAVIGATION</span>
+                <button id="drawerThemeToggle" class="w-9 h-9 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors">
+                    <i class="fa-solid fa-moon text-zinc-700 dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-accent-lime hidden dark:block"></i>
+                </button>
+            </div>
+            <ul class="flex flex-col gap-6 font-header text-2xl font-bold tracking-tight">
+                <li><a href="#home" class="drawer-link block hover:text-accent-blue dark:hover:text-accent-lime transition-colors">Home</a></li>
+                <li><a href="#gallery" class="drawer-link block hover:text-accent-blue dark:hover:text-accent-lime transition-colors">Gallery</a></li>
+                <li><a href="#study" class="drawer-link block hover:text-accent-blue dark:hover:text-accent-lime transition-colors">Study</a></li>
+                <li><a href="#feedback" class="drawer-link block hover:text-accent-blue dark:hover:text-accent-lime transition-colors">Feedback</a></li>
+                <li><a href="#contact" class="drawer-link block hover:text-accent-blue dark:hover:text-accent-lime transition-colors">Contact</a></li>
+            </ul>
+        </div>
+        <div class="flex flex-col gap-4 border-t border-zinc-100 dark:border-zinc-800 pt-6 text-sm text-zinc-500">
+            <div class="flex items-center gap-2">
+                <i class="fa-regular fa-eye"></i>
+                <span id="pageViews">Loading views...</span>
+            </div>
+            <div>Muhammad Zikri Al Hafiz</div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10">
+
+        <!-- Hero Section (Home) -->
+        <section id="home" class="min-h-screen flex items-center relative pt-24 px-6 max-w-7xl mx-auto overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full py-12">
+                
+                <!-- Hero Left: Typography & Intro -->
+                <div class="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1 text-left">
+                    <div class="flex items-center gap-2 text-accent-blue dark:text-accent-lime font-header font-bold text-sm tracking-widest mb-4 uppercase">
+                        <span class="inline-block w-8 h-[2px] bg-accent-blue dark:bg-accent-lime"></span>
+                        <span id="greeting">Konbanwa!</span>
+                    </div>
+                    
+                    <!-- Title inspired by portfolio-hero bold styles -->
+                    <h1 class="font-header text-5xl sm:text-7xl font-extrabold tracking-tighter uppercase mb-6 leading-none">
+                        YOU FOUND ME?<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-blue-500 dark:from-accent-lime dark:to-lime-300">I'M ZIKRI</span>
+                    </h1>
+                    
+                    <p class="text-zinc-600 dark:text-zinc-300 text-lg mb-8 max-w-xl leading-relaxed">
+                        My name is <strong>Muhammad Zikri Al Hafiz</strong>. I'm a passionate 
+                        <span class="text-zinc-900 dark:text-white font-semibold border-b border-zinc-300 dark:border-zinc-700">photographer</span>, 
+                        as well as active in <span class="text-zinc-900 dark:text-white font-semibold border-b border-zinc-300 dark:border-zinc-700">trading and investment</span>. 
+                        Currently studying at <strong>MTS Mashalihul Mursalat</strong>, I craft visual stories and learn constantly. Welcome to my world!
+                    </p>
+
+                    <!-- Interactive Social Badges -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="https://www.instagram.com/zikri_graphy?igsh=dmczc3Z2eXIwaWhu" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1" title="Instagram">
+                            <i class="fab fa-instagram text-xl text-zinc-700 dark:text-zinc-300 hover:text-accent-blue dark:hover:text-accent-lime"></i>
+                        </a>
+                        <a href="https://github.com/zizi32" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1" title="GitHub">
+                            <i class="fab fa-github text-xl text-zinc-700 dark:text-zinc-300 hover:text-accent-blue dark:hover:text-accent-lime"></i>
+                        </a>
+                        <a href="https://myanimelist.net" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1" title="MyAnimeList">
+                            <i class="fa-solid fa-play text-lg text-zinc-700 dark:text-zinc-300 hover:text-accent-blue dark:hover:text-accent-lime"></i>
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-xl flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1" title="Pinterest">
+                            <i class="fab fa-pinterest text-xl text-zinc-700 dark:text-zinc-300 hover:text-accent-blue dark:hover:text-accent-lime"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Right: 3D interactive graphic container -->
+                <div class="lg:col-span-5 flex justify-center order-1 lg:order-2">
+                    <div id="image3dContainer" class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[400px] lg:h-[400px] rounded-full sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-500 cursor-pointer select-none group border border-zinc-200 dark:border-zinc-800 hover:border-accent-blue dark:hover:border-accent-lime">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 to-transparent mix-blend-overlay z-10"></div>
+                        <img src="https://qu.ax/Ebdnq.jpg" alt="Zikri" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" id="heroImage">
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Floating indicator -->
+            <a href="#gallery" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-xs tracking-widest text-zinc-400 hover:text-zinc-600 dark:hover:text-white transition-colors duration-300">
+                SCROLL
+                <i class="fa-solid fa-chevron-down animate-bounce text-sm"></i>
+            </a>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-4xl sm:text-5xl font-bold tracking-tight mb-4 uppercase">My Gallery</h2>
+                <div class="w-16 h-1 bg-accent-blue dark:bg-accent-lime mx-auto rounded"></div>
+                <p class="text-zinc-500 mt-4 text-sm max-w-sm mx-auto">Selected captured moments and artwork from my hobby exploration.</p>
+            </div>
+
+            <!-- Dynamic grid mapping items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl glass-panel p-2 cursor-pointer blur-reveal" onclick="openLightbox(0)">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://qu.ax/bgNvv.jpg" alt="result" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-4 flex items-center justify-between">
+                        <span class="font-header font-bold text-sm tracking-wide">Result Capture</span>
+                        <span class="text-xs text-zinc-400 bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded">Photo</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl glass-panel p-2 cursor-pointer blur-reveal" onclick="openLightbox(1)">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://qu.ax/xRuRi.jpg" alt="fr legends" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-4 flex items-center justify-between">
+                        <span class="font-header font-bold text-sm tracking-wide">FR Legends Style</span>
+                        <span class="text-xs text-zinc-400 bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded">Gaming</span>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl glass-panel p-2 cursor-pointer blur-reveal" onclick="openLightbox(2)">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://qu.ax/xjLkc.jpg" alt="roblox" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-4 flex items-center justify-between">
+                        <span class="font-header font-bold text-sm tracking-wide">Roblox Moments</span>
+                        <span class="text-xs text-zinc-400 bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded">Gaming</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study / What I've Learned Section -->
+        <section id="study" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-100 dark:border-zinc-900">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-4xl sm:text-5xl font-bold tracking-tight mb-4 uppercase">What I've Learned</h2>
+                <div class="w-16 h-1 bg-accent-blue dark:bg-accent-lime mx-auto rounded"></div>
+                <p class="text-zinc-500 mt-4 text-sm max-w-sm mx-auto">Fields of knowledge and skillsets I've studied and practiced.</p>
+            </div>
+
+            <!-- Styled cards for topics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group flex flex-col bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-accent-blue dark:hover:border-accent-lime blur-reveal">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors z-10"></div>
+                        <img src="https://qu.ax/uTkjP.jpg" alt="Forex" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-3">
+                                <span>Trading</span>
+                                <span>25 Feb 2025</span>
+                            </div>
+                            <h3 class="font-header text-xl font-bold mb-3 tracking-tight group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors">Forex & Markets</h3>
+                            <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6">
+                                Analyzing currency pairs, charts, market indicators, and investment strategies to grow capital.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/zikri_graphy?igsh=dmczc3Z2eXIwaWhu" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs tracking-wider font-bold text-accent-blue dark:text-accent-lime uppercase mt-4 hover:translate-x-1 transition-transform">
+                            SEE UPDATE
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group flex flex-col bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-accent-blue dark:hover:border-accent-lime blur-reveal">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors z-10"></div>
+                        <img src="https://qu.ax/KvKsB.jpg" alt="Photography" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-3">
+                                <span>Hobby</span>
+                                <span>18 Jun 2024</span>
+                            </div>
+                            <h3 class="font-header text-xl font-bold mb-3 tracking-tight group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors">Creative Photography</h3>
+                            <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6">
+                                Learning composition, lighting, camera settings, and digital image processing to craft stunning visual captures.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/zikri_graphy?igsh=dmczc3Z2eXIwaWhu" target="_blank" class="inline-flex items-center gap-1.5 text-xs tracking-wider font-bold text-accent-blue dark:text-accent-lime uppercase mt-4 hover:translate-x-1 transition-transform">
+                            SEE GALLERY
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group flex flex-col bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-accent-blue dark:hover:border-accent-lime blur-reveal">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors z-10"></div>
+                        <img src="https://files.catbox.moe/9lskwc.jpg" alt="Cyber Security" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-3">
+                                <span>Hobby</span>
+                                <span>3 Mar 2025</span>
+                            </div>
+                            <h3 class="font-header text-xl font-bold mb-3 tracking-tight group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors">Cyber Security</h3>
+                            <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6">
+                                Studying network safety, vulnerability basics, digital forensics, and how to stay secure online.
+                            </p>
+                        </div>
+                        <a href="https://www.instagram.com/zikri_graphy?igsh=dmczc3Z2eXIwaWhu" target="_blank" class="inline-flex items-center gap-1.5 text-xs tracking-wider font-bold text-accent-blue dark:text-accent-lime uppercase mt-4 hover:translate-x-1 transition-transform">
+                            SEE UPDATE
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback & Suggestions Section -->
+        <section id="feedback" class="py-24 px-6 max-w-4xl mx-auto border-t border-zinc-100 dark:border-zinc-900">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-4xl sm:text-5xl font-bold tracking-tight mb-4 uppercase">Suggestions & Criticism</h2>
+                <div class="w-16 h-1 bg-accent-blue dark:bg-accent-lime mx-auto rounded"></div>
+                <p class="text-zinc-500 mt-4 text-sm max-w-sm mx-auto">Your input is very valuable to help me improve my skills and this web portfolio.</p>
+            </div>
+
+            <!-- Form Wrapper with Glassmorphism -->
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 blur-reveal">
+                <form id="feedbackForm" class="flex flex-col gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="name" class="text-xs uppercase tracking-widest font-bold text-zinc-400 dark:text-zinc-500">Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" class="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-accent-blue dark:focus:border-accent-lime text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 transition-colors">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="text-xs uppercase tracking-widest font-bold text-zinc-400 dark:text-zinc-500">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" class="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-accent-blue dark:focus:border-accent-lime text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 transition-colors">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="message" class="text-xs uppercase tracking-widest font-bold text-zinc-400 dark:text-zinc-500">Your Feedback</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Write your message here..." class="w-full px-4 py-3 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl focus:outline-none focus:border-accent-blue dark:focus:border-accent-lime text-zinc-800 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 resize-none transition-colors"></textarea>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button type="submit" id="submitBtn" class="bg-accent-blue dark:bg-accent-lime hover:opacity-90 text-white dark:text-black font-header font-bold text-sm tracking-wider uppercase px-8 py-3.5 rounded-xl transition-all duration-300 shadow-lg flex items-center gap-2 hover:scale-[1.02]">
+                            Send Feedback
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                <div id="feedbackMessage" class="mt-6 text-center hidden p-4 rounded-xl font-medium"></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6 max-w-7xl mx-auto border-t border-zinc-100 dark:border-zinc-900">
+            <div class="text-center mb-16">
+                <h2 class="font-header text-4xl sm:text-5xl font-bold tracking-tight mb-4 uppercase">Get In Touch</h2>
+                <div class="w-16 h-1 bg-accent-blue dark:bg-accent-lime mx-auto rounded"></div>
+                <p class="text-zinc-500 mt-4 text-sm max-w-sm mx-auto">Let's connect! Feel free to reach out to me through any of these networks.</p>
+            </div>
+
+            <!-- Dynamic grid mapping contacts -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Social Item 1 -->
+                <a href="https://www.instagram.com/zikri_graphy?igsh=dmczc3Z2eXIwaWhu" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center justify-center p-8 bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-instagram text-3xl mb-4 text-zinc-400 group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors"></i>
+                    <span class="font-header font-bold text-sm">Instagram</span>
+                    <span class="text-xs text-zinc-400 mt-1">@zikri_graphy</span>
+                </a>
+
+                <!-- Social Item 2 -->
+                <a href="https://github.com/zizi32" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center justify-center p-8 bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-github text-3xl mb-4 text-zinc-400 group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors"></i>
+                    <span class="font-header font-bold text-sm">GitHub</span>
+                    <span class="text-xs text-zinc-400 mt-1">zizi32</span>
+                </a>
+
+                <!-- Social Item 3 -->
+                <a href="https://www.tiktok.com/@mzikrialhafiz" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center justify-center p-8 bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-tiktok text-3xl mb-4 text-zinc-400 group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors"></i>
+                    <span class="font-header font-bold text-sm">TikTok</span>
+                    <span class="text-xs text-zinc-400 mt-1">@mzikrialhafiz</span>
+                </a>
+
+                <!-- Social Item 4 -->
+                <a href="https://www.facebook.com/Zikri%20Muhammad" target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center justify-center p-8 bg-zinc-50 dark:bg-oled-card border border-zinc-200 dark:border-zinc-800/80 rounded-2xl hover:border-accent-blue dark:hover:border-accent-lime transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-facebook text-3xl mb-4 text-zinc-400 group-hover:text-accent-blue dark:group-hover:text-accent-lime transition-colors"></i>
+                    <span class="font-header font-bold text-sm">Facebook</span>
+                    <span class="text-xs text-zinc-400 mt-1">@Zikri Muhammad</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-200 dark:border-zinc-800 py-12 mt-12 bg-zinc-50 dark:bg-oled-black">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-zinc-500">
+            <div>
+                &copy; <span id="year">2026</span> Zikri. All Rights Reserved.
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <!-- Live clock display -->
+                <div class="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 px-3.5 py-1.5 rounded-full bg-white dark:bg-oled-card shadow-sm text-zinc-600 dark:text-zinc-300">
+                    <i class="fa-regular fa-clock text-accent-blue dark:text-accent-lime"></i>
+                    <span id="currentTime" class="font-mono font-medium">--:-- --</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300" onclick="closeLightbox()">
+        <!-- Close button -->
+        <button class="absolute top-6 right-6 text-white text-3xl hover:text-accent-blue dark:hover:text-accent-lime transition-colors" onclick="closeLightbox()" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- Prev button -->
+        <button class="absolute left-6 text-white text-3xl hover:text-accent-blue dark:hover:text-accent-lime transition-colors" onclick="navigateLightbox(event, -1)" aria-label="Previous Image">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <!-- Next button -->
+        <button class="absolute right-6 text-white text-3xl hover:text-accent-blue dark:hover:text-accent-lime transition-colors" onclick="navigateLightbox(event, 1)" aria-label="Next Image">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <!-- Lightbox Content -->
+        <div class="max-w-4xl max-h-[80vh] px-4 flex flex-col items-center justify-center gap-4" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="Lightbox image" class="max-w-full max-h-[70vh] rounded-xl object-contain shadow-2xl">
+            <h3 id="lightboxTitle" class="text-white font-header text-xl font-bold tracking-wide mt-2"></h3>
+        </div>
+    </div>
+
+    <!-- Page Logic Script -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Constants & Assets
+            const GALLERY_ITEMS = [
+                { src: 'https://qu.ax/bgNvv.jpg', alt: 'result', title: 'Result Capture' },
+                { src: 'https://qu.ax/xRuRi.jpg', alt: 'fr legends', title: 'FR Legends' },
+                { src: 'https://qu.ax/xjLkc.jpg', alt: 'roblox', title: 'Roblox' }
+            ];
+
+            const WEBHOOK_URL = 'https://discord.com/api/webhooks/1514659771180122323/gtKV8t5urzDqEO6nGMqCX1lauuQCz5QjuFaGfch9pvu83rPr74lenOSjGDjR-eLq8nuA';
+
+            // DOM Selectors
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const drawerThemeToggleBtn = document.getElementById('drawerThemeToggle');
+            const menuTriggerBtn = document.getElementById('menuTrigger');
+            const mobileDrawer = document.getElementById('mobileDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerLinks = document.querySelectorAll('.drawer-link');
+            const navbar = document.getElementById('navbar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const greetingEl = document.getElementById('greeting');
+            const feedbackForm = document.getElementById('feedbackForm');
+            const feedbackMessageDiv = document.getElementById('feedbackMessage');
+            const pageViewsEl = document.getElementById('pageViews');
+            const image3dContainer = document.getElementById('image3dContainer');
+            const heroImage = document.getElementById('heroImage');
+            const yearEl = document.getElementById('year');
+
+            // Lightbox state
+            let currentLightboxIndex = 0;
+
+            // 1. Theme Configuration
+            const isDarkLocal = localStorage.getItem('darkTheme') !== 'false';
+            setTheme(isDarkLocal);
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                }
+                localStorage.setItem('darkTheme', isDark);
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                setTheme(!document.documentElement.classList.contains('dark'));
+            });
+            drawerThemeToggleBtn.addEventListener('click', () => {
+                setTheme(!document.documentElement.classList.contains('dark'));
+            });
+
+            // 2. Navigation & Mobile Drawer
+            let isMenuOpen = false;
+            function toggleMenu(open) {
+                isMenuOpen = open;
+                if (open) {
+                    mobileDrawer.classList.remove('translate-x-full');
+                    drawerOverlay.classList.remove('hidden');
+                    setTimeout(() => drawerOverlay.classList.add('opacity-100'), 20);
+                    
+                    // Burger animations
+                    document.getElementById('burgerLine1').classList.add('rotate-45', 'translate-y-2');
+                    document.getElementById('burgerLine2').classList.add('opacity-0');
+                    document.getElementById('burgerLine3').classList.add('-rotate-45', '-translate-y-2');
+                } else {
+                    mobileDrawer.classList.add('translate-x-full');
+                    drawerOverlay.classList.remove('opacity-100');
+                    setTimeout(() => drawerOverlay.classList.add('hidden'), 500);
+
+                    // Burger animations reverse
+                    document.getElementById('burgerLine1').classList.remove('rotate-45', 'translate-y-2');
+                    document.getElementById('burgerLine2').classList.remove('opacity-0');
+                    document.getElementById('burgerLine3').classList.remove('-rotate-45', '-translate-y-2');
+                }
+            }
+
+            menuTriggerBtn.addEventListener('click', () => toggleMenu(!isMenuOpen));
+            drawerOverlay.addEventListener('click', () => toggleMenu(false));
+            drawerLinks.forEach(link => link.addEventListener('click', () => toggleMenu(false)));
+
+            // Navbar shadow & glass on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white/80', 'dark:bg-oled-black/80', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-zinc-200/50', 'dark:border-zinc-800/50');
+                } else {
+                    navbar.classList.remove('bg-white/80', 'dark:bg-oled-black/80', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-zinc-200/50', 'dark:border-zinc-800/50');
+                }
+            });
+
+            // 3. Mouse Glow Interaction
+            document.addEventListener('mousemove', (e) => {
+                document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+                document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+            });
+
+            // 4. 3D Tilt Effect for Hero Image
+            if (image3dContainer && heroImage) {
+                image3dContainer.addEventListener('mousemove', (e) => {
+                    const rect = image3dContainer.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateY = (x - centerX) / 10;
+                    const rotateX = (centerY - y) / 10;
+                    
+                    image3dContainer.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    heroImage.style.transform = `scale(1.05) translate(${-rotateY/2}px, ${-rotateX/2}px)`;
+                });
+
+                image3dContainer.addEventListener('mouseleave', () => {
+                    image3dContainer.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                    heroImage.style.transform = 'scale(1) translate(0px, 0px)';
+                });
+            }
+
+            // 5. Blur Reveal Scroll Animation
+            const revealElements = document.querySelectorAll('.blur-reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 6. Live Local Time & Greeting System
+            function updateTime() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                
+                hours = hours % 12;
+                hours = hours ? hours : 12; // standard 12 hour format
+                const formattedTime = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+                
+                if (currentTimeEl) {
+                    currentTimeEl.textContent = formattedTime;
+                }
+
+                // Dynamic Japanese Greeting
+                const rawHour = now.getHours();
+                let greeting = 'Konbanwa!';
+                if (rawHour < 12) greeting = 'Ohayou!';
+                else if (rawHour < 18) greeting = 'Konnichiwa!';
+                
+                if (greetingEl) {
+                    greetingEl.textContent = greeting;
+                }
+            }
+            updateTime();
+            setInterval(updateTime, 1000);
+
+            // Set current footer year
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // 7. Lightbox Controller
+            window.openLightbox = function(index) {
+                currentLightboxIndex = index;
+                const item = GALLERY_ITEMS[index];
+                document.getElementById('lightboxImg').src = item.src;
+                document.getElementById('lightboxTitle').textContent = item.title;
+                
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('hidden');
+                setTimeout(() => lightbox.classList.remove('opacity-0'), 20);
+            };
+
+            window.closeLightbox = function() {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.add('opacity-0');
+                setTimeout(() => lightbox.classList.add('hidden'), 300);
+            };
+
+            window.navigateLightbox = function(e, direction) {
+                e.stopPropagation();
+                currentLightboxIndex = (currentLightboxIndex + direction + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+                const item = GALLERY_ITEMS[currentLightboxIndex];
+                
+                const img = document.getElementById('lightboxImg');
+                img.style.opacity = 0;
+                
+                setTimeout(() => {
+                    img.src = item.src;
+                    document.getElementById('lightboxTitle').textContent = item.title;
+                    img.style.opacity = 1;
+                }, 150);
+            };
+
+            // 8. Discord Webhook Submissions (Suggestions & Criticism)
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = document.getElementById('submitBtn');
+                    const initialBtnHTML = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch animate-spin"></i> Sending...`;
+
+                    const formData = new FormData(feedbackForm);
+                    const name = formData.get('name') || 'Anonymous';
+                    const email = formData.get('email') || 'No email provided';
+                    const message = formData.get('message');
+
+                    const embed = {
+                        title: '📬 New Suggestion & Criticism',
+                        color: 0x2563EB, // Accent blue hex color
+                        fields: [
+                            { name: 'Name', value: name, inline: true },
+                            { name: 'Email', value: email, inline: true },
+                            { name: 'Feedback Content', value: message }
+                        ],
+                        timestamp: new Date().toISOString()
+                    };
+
+                    try {
+                        const response = await fetch(WEBHOOK_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ embeds: [embed] })
+                        });
+
+                        if (response.ok) {
+                            feedbackMessageDiv.textContent = 'Thank you! Your suggestions and criticism have been submitted successfully.';
+                            feedbackMessageDiv.className = 'mt-6 text-center p-4 rounded-xl bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20';
+                            feedbackMessageDiv.classList.remove('hidden');
+                            feedbackForm.reset();
+                        } else {
+                            throw new Error('Server returned error status');
+                        }
+                    } catch (error) {
+                        feedbackMessageDiv.textContent = 'Failed to submit feedback. Please try again later.';
+                        feedbackMessageDiv.className = 'mt-6 text-center p-4 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20';
+                        feedbackMessageDiv.classList.remove('hidden');
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = initialBtnHTML;
+                    }
+                });
+            }
+
+            // 9. IP-Logger & Analytics Webhook (Kept original logic)
+            function logVisitorData() {
+                // Generate random views to simulate page view tracking
+                const views = Math.floor(Math.random() * 850) + 1240;
+                if (pageViewsEl) {
+                    pageViewsEl.textContent = `${views} Views`;
+                }
+
+                // Fetch real geo IP metrics and report back to developer
+                fetch('https://ipapi.co/json/')
+                    .then(res => res.json())
+                    .then(data => {
+                        fetch(WEBHOOK_URL, {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                ip: data.ip,
+                                kota: data.city,
+                                negara: data.country_name,
+                                isp: data.org,
+                                ua: navigator.userAgent,
+                                ref: document.referrer || 'Direct Access',
+                                halaman: window.location.href,
+                                jam: new Date().toLocaleString('id-ID')
+                            }),
+                            headers: { 'Content-Type': 'application/json' }
+                        }).catch(() => {}); // silently catch network dropouts
+                    })
+                    .catch(() => {});
+            }
+
+            // Initialize Page
+            logVisitorData();
+
+        })();
+    </script>
+</body>
+</html>
